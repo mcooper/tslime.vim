@@ -123,8 +123,34 @@ function! s:Tmux_Vars()
   endif
 endfunction
 
+function! Move_to_Tmux()
+  if !exists("g:tslime")
+    call <SID>Tmux_Vars()
+  endif
+
+  call system("tmux switch -t " . s:tmux_target())
+endfunction
+
+function! Clear_to_Tmux(text)
+  if !exists("g:tslime")
+    call <SID>Tmux_Vars()
+  endif
+  
+  call Send_to_Tmux(a:text)
+
+  call setline('.', '')
+
+  call feedkeys('i')
+
+  call system("tmux switch -t " . s:tmux_target())
+endfunction
+
+
 vnoremap <silent> <Plug>SendSelectionToTmux "ry :call Send_to_Tmux(@r)<CR>
 nmap     <silent> <Plug>NormalModeSendToTmux vip<Plug>SendSelectionToTmux
+
+vnoremap <silent> <Plug>ClearSelectionToTmux "ry :call Clear_to_Tmux(@r)<CR>
+nmap     <silent> <Plug>NormalModeClearToTmux 0v$h<Plug>ClearSelectionToTmux
 
 nnoremap          <Plug>SetTmuxVars :call <SID>Tmux_Vars()<CR>
 
