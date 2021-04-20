@@ -16,6 +16,9 @@ function! Send_keys_to_Tmux(keys)
   endif
 
   call system("tmux send-keys -t " . s:tmux_target() . " " . a:keys)
+
+  "move cursor to end of previous selection
+  normal! `>
 endfunction
 
 " Main function.
