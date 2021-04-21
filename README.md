@@ -68,3 +68,12 @@ nmap <your_key_combo> :Tmux <your_command><CR>
 
 More info about the `<Plug>` and other mapping syntax can be found
 [here](http://vim.wikia.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_3\) ).
+
+My Customizations
+-----------------
+
+Changes unique to this branch:
+
+* The cursor moves to the end of the selection after sending text to tmux
+* New functions clear the text from the vim buffer when it is sent to tmux
+* Lines with only tabs or spaces are removed, which makes it possible to send complex functions to ipython.
