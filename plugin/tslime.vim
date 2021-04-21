@@ -24,7 +24,7 @@ endfunction
 " Main function.
 " Use it in your script if you want to send text to a tmux session.
 function! Send_to_Tmux(text)
-  call Send_keys_to_Tmux('"'.escape(substitute(a:text, '\n\S\+\n', '\n', 'g'), '`\"$').'"')
+  call Send_keys_to_Tmux('"'.escape(substitute(a:text, '\n\s\+\n', '\n', 'g'), '`\"$').'"')
 endfunction
 
 function! s:tmux_target()
