@@ -119,6 +119,7 @@ function! s:Tmux_Vars()
   if len(panes) == 1
     let g:tslime['pane'] = panes[0]
   else
+    call system('tmux display-panes')
     let g:tslime['pane'] = input("pane number: ", "", "customlist,Tmux_Pane_Numbers")
     if g:tslime['pane'] == ''
       let g:tslime['pane'] = panes[0]

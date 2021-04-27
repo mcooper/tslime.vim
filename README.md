@@ -77,3 +77,4 @@ Changes unique to this branch:
 * The cursor moves to the end of the selection after sending text to tmux
 * New functions clear the text from the vim buffer when it is sent to tmux
 * Lines with only tabs or spaces are removed, which makes it possible to send complex functions to ipython.
+* Flash the pane numbers when making a selection to send text
